@@ -10,7 +10,7 @@
 |first_name_ruby|string|null: false|
 |last_name|string|null: false|
 |last_name_ruby|string|null: false|
-|birthday|date| ※date_select使用|
+|phone_number|string|null: false|
 
 ### Association
 - has_one :profile
@@ -27,11 +27,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |nick_name|string|null: false|
-|age|integer|null: false|
+|age|integer|       |
+|birthday|date| ※date_select使用|
 |area_id|integer|null: false ※ActiveHash使用|
 |genre_id|integer|null: false ※ActiveHash使用|
 |history|string|    |
-|self_pr|text|null: false|
+|public_relation|text|null: false|
 |user|references|null: false, foreign_key: true|
 
 ### Association

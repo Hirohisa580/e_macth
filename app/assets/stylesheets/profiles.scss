@@ -1,0 +1,40 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// マイページ登録フォーム
+.field, .actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.area {
+  margin-right: 100px;
+}
+
+.profile-logo {
+  text-align: center;
+}
+
+.img-upload {
+  margin-bottom: 50px;
+}
+
+.form-text {
+  text-align: center;
+}
+
+.actions {
+  margin-right: 48px;
+}
+
+.weight-bold-text {
+  font-size: 30px;
+}
+
+.birthday-form {
+  margin-bottom:50px;
+}
+// マイページ登録フォーム
