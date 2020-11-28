@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def index
-    @profile = Profile.pluck(:user_id)
+    @profile_user_id = Profile.pluck(:user_id)
   end
 
   def new
