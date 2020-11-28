@@ -5,7 +5,7 @@
     </div>
     <div class="user">
 
-        <% if user_signed_in? && @profile_user_id.include?(current_user.id)%>
+        <% if user_signed_in? && @profile_user_id.try(:include?, current_user.id)%>
           <li><%= link_to "マイページ", "#", class: "btn btn-outline-primary mb-3" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout btn btn-outline-primary mb-3" %></li>
         <% elsif user_signed_in? %>

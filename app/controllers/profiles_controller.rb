@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    binding.pry
     @profile = Profile.new(profile_params)
     @profile.save
     redirect_to root_path
@@ -19,7 +18,7 @@ class ProfilesController < ApplicationController
   private
   
   def profile_params
-    params.require(:profile).permit(:nick_name, :age, :birthday, :area_id, :history, :public_relation, :image).merge(user_id: current_user.id)
+    params.require(:profile).permit(:nick_name, :age, :birthday, :area_id, :history, :public_relation, :genre_one_id, :genre_two_id, :genre_three_id, :image).merge(user_id: current_user.id)
   end
 
 end
