@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 2020_11_27_091747) do
     t.integer "age"
     t.date "birthday"
     t.integer "area_id", null: false
+    t.integer "genre_one_id", null: false
+    t.integer "genre_two_id"
+    t.integer "genre_three_id"
     t.string "history"
     t.text "public_relation", null: false
     t.bigint "user_id"
