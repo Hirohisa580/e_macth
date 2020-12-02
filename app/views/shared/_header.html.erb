@@ -1,20 +1,46 @@
 <header>
   <div class="container mb-3">
     <div class="top-logo">
-      <h1>E-match</h1>
+      <a href="/"><span>E</span>-match</a>
     </div>
-    <div class="user">
-
-        <% if user_signed_in? && @profile_user_id.try(:include?, current_user.id)%>
-          <li><%= link_to "マイページ", "#", class: "btn btn-outline-primary mb-3" %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout btn btn-outline-primary mb-3" %></li>
-        <% elsif user_signed_in? %>
-          <li><%= link_to 'マイページ作成', "/profiles/new", class: "btn btn-outline-primary mb-3"%></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout btn btn-outline-primary mb-3" %></li>
-        <% else %>
-          <li><%= link_to '新規登録', "/users/sign_up", class: "sign-up btn btn-outline-primary mb-3" %></li>
-          <li><%= link_to 'ログイン', "/users/sign_in" , class: "login btn btn-outline-primary mb-3" %></li>
-        <% end %>  
-    </div>  
+  </div>
+  <div>
+    <% if user_signed_in? && @profile_user_id.try(:include?, current_user.id)%>
+      <ul class="nav nav-tabs">
+        <li>
+          <%= link_to 'トップページ', root_path, class: "nav-link header__link" %>
+        </li>
+        <li>
+          <%= link_to '掲示板', "#", class: "nav-link header__link" %>
+        </li>
+        <li>
+          <%= link_to 'マイページ', profile_path(@user_profile.id), class: "nav-link header__link" %>          
+        </li>
+        <li>
+          <%= link_to 'DMルーム', dm_path(@current_profile.id), class: "nav-link header__link" %>          
+        </li>
+      </ul>
+    <% elsif user_signed_in? %>
+      <ul class="nav nav-tabs">
+        <li>
+          <%= link_to 'トップページ', root_path, class: "nav-link header__link" %>
+        </li>
+        <li>
+          <%= link_to '掲示板', "#", class: "nav-link header__link" %>
+        </li>
+        <li>
+          <%= link_to 'プロフィール作成', "/profiles/new", class: "nav-link header__link" %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="nav nav-tabs">
+        <li>
+          <%= link_to 'トップページ', root_path, class: "nav-link header__link" %>
+        </li>
+        <li>
+          <%= link_to '掲示板', "#", class: "nav-link header__link" %>
+        </li>
+      </ul>
+     <% end %>
   </div>
 </header>

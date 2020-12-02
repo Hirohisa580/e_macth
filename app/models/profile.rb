@@ -5,5 +5,7 @@ class Profile < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
-  belongs_to :genre
+  belongs_to :genre_one
+  belongs_to :genre_two
+  belongs_to :genre_three
 end

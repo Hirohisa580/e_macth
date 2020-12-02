@@ -1,0 +1,32 @@
+
+<div class="top-page">  
+  <%=render "shared/edit_header" %>
+</div>
+
+<div class="all__main">
+  <div class="dm__wrapper">
+    <div class="dm__new__main">
+        <P>フォローしているユーザー</p>
+        <%= form_with model:@dm, url: dms_path, method: :post, local: true do |f|%>
+          <select name="dm[user_ids][]">
+            <option value="">DMするユーザーを選択してください</option>
+            <% @profile_all.where.not(id: current_user.id).zip(@user) do |profile, user| %>
+              <option value=<%= user.id %>><%= profile.nickname %></option>
+            <% end %>
+          </select>
+          <input name="dm[user_ids][]" type="hidden" value=<%= current_user.id %>>
+          <%= f.submit "作成" %>
+        <% end %>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+  <%#= form_with model: @dm, url: dms_path, local: true do |f| %>
+              <%#= f.submit "ダイレクトメッセージを送る", class: :profile__btn %>
+          <%# @profile.where.not(user_id: current_user.id).each do |profile| %>
+            <p><%#= f.submit "#{profile.nickname}", class: "dm__submit", name: "profile.id"%></p>
+          <%# end %>
+          <%# if user.id == 0 do user.id+1 %>
+
