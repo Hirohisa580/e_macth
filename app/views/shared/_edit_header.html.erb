@@ -1,0 +1,22 @@
+<header>
+  <div class="container mb-3">
+    <div class="top-logo">
+      <a href="/"><span>E</span>-match</a>
+    </div>
+  </div>
+  <div>
+    <ul class="nav nav-tabs">
+      <li>
+        <%= link_to 'トップページ', root_path, class: "nav-link header__link" %>
+      </li>
+      <li>
+        <%= link_to '掲示板', "#", class: "nav-link header__link" %>
+      </li>
+      <li>
+        <%= link_to 'マイページ', profile_path(@user_profile.id), class: "nav-link header__link" %>          
+      </li>
+      <li>
+        <%= link_to 'DMルーム', dm_path(@current_profile.id), class: "nav-link header__link" %>          
+      </li>
+    </ul>
+</header>

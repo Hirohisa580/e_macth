@@ -14,7 +14,6 @@
 
 ### Association
 - has_one :profile
-- has_one :dm
 - has_many :messages
 - has_many :boards
 - has_many :comments
@@ -37,6 +36,7 @@
 
 ### Association
 - belongs_to :user
+- has_one :dm
 
 
 
@@ -45,7 +45,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user|references|null: false, foreign_key: true|
+|profile|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user

@@ -1,0 +1,41 @@
+
+<div class="top-page">  
+  <%=render "shared/edit_header" %>
+</div>
+
+<div class="all__main">
+  <div class="dm__wrapper">
+
+    <div class="header__bottom">
+      <div class="row">
+        <div class="dm__header col-2">
+          DM(トップページ)
+        </div>
+        <div class="dm__header col10">
+          <% if @current_profile.id != @profile.id%>
+            <div class="message__title">
+                <h1><%= @profile.nickname%></h1>
+            </div>
+            <div class="message__start">
+              <%=link_to "メッセージを送る", dm_messages_path(@profile.id), class: "btn btn-info" %>
+            </div>
+          <% else %>
+            <h1>ユーザーを選んでください</h1>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="dm__main col-2">
+          <% @profile_all.where.not(id: current_user.id).where(user_id: @i_user_id).each do |profile| %>
+              <p><%= link_to "#{profile.nickname}", dm_path(profile.id), class: "dm__link btn "%></p>
+          <% end %>
+      </div>
+      <div class="dm__main col-10">
+        <h2>過去のやり取りを表示</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
