@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :destroy]
 
   def index
-    @profile = Profile.all
+    @profile_all = Profile.all
   end
 
   def new
@@ -25,9 +25,7 @@ class ProfilesController < ApplicationController
     @dm_ids = user_dm.pluck(:dm_id)                           #現ユーザーが持ってるdm_idを配列で取得
     @intersection = @dm_ids & @profile_dm_ids                 #重なったdm_id
 
-    @dm = Dm.new
-    @user = User.all
-    @profile_all = Profile.all
+    @profile = Profile.find(params[:id])
   end
 
   def edit 
@@ -51,9 +49,11 @@ class ProfilesController < ApplicationController
 
 
   def header_variable
-    @profile_user_id = Profile.pluck(:user_id)
-    @user_profile = Profile.find_by(user_id: current_user.id)
-    @current_profile = Profile.find_by(user_id: current_user.id)
+    if user_signed_in?
+      @user_profile = Profile.find_by(user_id: current_user.id)
+      @profile_user_id = Profile.pluck(:user_id)
+      @current_profile = Profile.find_by(user_id: current_user.id)
+    end
   end
 
   def set_profile

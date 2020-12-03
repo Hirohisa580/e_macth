@@ -3,7 +3,7 @@
   <%=render "shared/header"%>
 </div>
 <div class="all__main">
-     <header>
+     <div class="top__header">
         <% unless user_signed_in?%>
           <ul class="user__log">
             <li>
@@ -23,22 +23,24 @@
     </header>
     <div class='item-contents'>
       <h2 class='title'>プロフィール一覧</h2>
-      <% if @profile == nil %>
+      <% if @profile_all == nil %>
         <p><%= "代わりの画像" %></p>
       <% else %>
         <ul class='item-lists'>
-          <% @profile.each do |profile| %>
+          <% @profile_all.each do |profile| %>
             <li class='list'>
               <%= link_to profile_path(profile.id)  do %>
                 <div class='item-img-content'>
                   <%= image_tag profile.image, class: "item-img img-thumbnail" %>
                 </div>
+              <% end %>
                 <div class='item-info'>
                   <h3 class='item-name'>
-                    <%= profile.genre_one.name %>
+                    <li>芸名: <%= link_to "#{profile.nickname}", profile_path(profile.id), class: "profile__nickname"%></li>
+                    <li>ジャンル: <%= link_to "#{profile.genre_one.name}", "#", class: "profile__genre"%></li>
+                    <li>地域: <%= link_to "#{profile.area.name}", "#", class: "profile__area"%></li>
                   </h3>
                 </div>
-              <% end %>
             </li>
           <% end %>
         </ul>

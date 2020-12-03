@@ -7,14 +7,41 @@
     <div class="message__wrapper" >
       
         <div class="message__header">
-          <h1 class="header__title"><%= @profile.nickname%></h1>
+          <% if @b_other == nil %>
+            <h1 class="header__title">⬅️ユーザーを選択してください<h1>
+          <% else %>
+            <h1 class="header__title"><%= @b_other.nickname%></h1>
+          <% end %>
         </div>
 
         <div class="message__main">
+          <% if @b_other == nil%>
+          <% else %>
+              <% @r.zip(@b) do |r, b| %>
+                <p class="all__message"><%= r.message%></p>
+                  <%# <p class="all__nickname"><%= b.nickname%></p>  
+                <p class="all__created_at"><%= r.created_at %></p>
+              <% end %>
+          <% end %>
         </div>
 
-        <div class="message__footer">        
+        <div class="message__users">
+          <% @h.zip(@s_uniq) do |h, s_uniq| %>
+            <p><%=link_to "#{h.nickname}", dm_messages_path(s_uniq) %></p>
+          <% end %>
         </div>
+
+        <% if @b_other == nil%>
+        <% else %>
+          <div class="message__footer">
+            <%= form_with model: [@dm,@message], url: dm_messages_path, method: :post, local: true do |f| %>
+              <div class="message__form">  
+                <%= f.text_area :message, class: "message__input" %>
+                <%= f.submit "送信", class: "btn btn-success"%>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
 
     </div>
 </div>

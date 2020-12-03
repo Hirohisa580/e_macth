@@ -5,6 +5,7 @@
     </div>
   </div>
   <div>
+    <p class="login__user">ログイン中: <%=link_to "#{current_user.last_name}#{current_user.first_name}", "#"%> さん<p>
     <ul class="nav nav-tabs">
       <li>
         <%= link_to 'トップページ', root_path, class: "nav-link header__link" %>
@@ -16,7 +17,7 @@
         <%= link_to 'マイページ', profile_path(@user_profile.id), class: "nav-link header__link" %>          
       </li>
       <li>
-        <%= link_to 'DMルーム', dm_path(@current_profile.id), class: "nav-link header__link" %>          
+        <%= link_to 'DMルーム', dm_messages_path(:dm_id), class: "nav-link header__link" %>          
       </li>
     </ul>
 </header>

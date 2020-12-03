@@ -10,3 +10,125 @@
         <% end %>
       
 <%= link_to "ダイレクトメッセージ作成", new_dm_path, class: :profile__btn %>
+
+    @profile = Profile.find(params[:id])                      #選んだユーザーのプロフィール情報を取得
+    profile_user_id = @profile.user_id                        #選んだユーザーのユーザーidを取得
+    profile_user_dm = UserDm.where(user_id: profile_user_id)  #選んだユーザーのuser_dmsレコード情報を取得
+    @profile_dm_ids = profile_user_dm.pluck(:dm_id)           #選んだユーザーが持ってるdm_idを配列で取得
+    user_dm= UserDm.where(user_id: current_user.id)           #現ユーザーのuser_dmsレコード情報を取得
+    @dm_ids = user_dm.pluck(:dm_id)                           #現ユーザーが持ってるdm_idを配列で取得
+    @intersection = @dm_ids & @profile_dm_ids                 #現ユーザーと選んだユーザーが所属しているdm_id
+
+    i = UserDm.where(dm_id: @dm_ids)                          #現ユーザーが所属しているdm_idを持っているユーザー情報を全て取得
+    i_user_ids = i.pluck(:user_id)                            #現ユーザーと同じdm_idを持つユーザーのuser_id2を配列で取得
+    @i_user_id = i_user_ids.uniq                              #上記で得た配列から重複したidを除外
+dms.controller、indexから
+
+
+    @dm = Dm.new(dm_params)
+    profile_user_id = @dm.user_ids[0]                         #選んだユーザーのユーザーidを取得
+    profile_user_dm = UserDm.where(user_id: profile_user_id)  #選んだユーザーのuser_dmsレコード情報を取得
+    @profile_dm_ids = profile_user_dm.pluck(:dm_id)           #選んだユーザーが持ってるdm_idを配列で取得
+    user_dm= UserDm.where(user_id: current_user.id)           #現ユーザーのuser_dmsレコード情報を取得
+    @dm_ids = user_dm.pluck(:dm_id)                           #現ユーザーが持ってるdm_idを配列で取得
+    @intersection = @dm_ids & @profile_dm_ids                 #現ユーザーと選んだユーザーが所属しているdm_id
+    if @intersection.empty?
+      @dm.save
+      @profile = Profile.find_by(user_id: profile_user_id)      #選んだユーザーのプロフィール情報を取得
+      redirect_to dm_path(@profile.id)
+    else
+      redirect_to root_path
+    end
+dms.controller、createから
+
+
+          <%= form_with model:@dm, url: "#", method: :post, local: true do |f|%>
+            <input name="dm[user_ids][]" type="hidden" value=<%= @profile.user_id%>>
+            <input name="dm[user_ids][]" type="hidden" value=<%= current_user.id %>>
+          <%= f.submit "DMルーム（作成前）", class: :profile__btn %>
+      profile show.html.erbから
+      
+
+メッセージルーム
+<div class="all__main">
+    <div class="message__wrapper" >
+      
+        <div class="message__header">
+          <h1 class="header__title">テスト/h1>
+        </div>
+
+        <div class="message__main">
+        </div>
+
+        <div class="message__footer">
+          <%#= form_with model: [@dm,@message], url: dm_messages_path, method: :post, local: true do |f| %>
+            <div class="message__form">  
+              <%#= f.text_field :message, class: "message__input" %>
+              <%#= f.submit "送信", class: "btn btn-success"%>
+            </div>
+          <%# end %>
+        </div>
+
+    </div>
+</div>
+
+.message__wrapper {
+  padding: 0px 100px;
+  height: 100vh;
+}
+
+.message__header {
+
+}
+.header__title {
+  padding: 15px;
+  text-align: center;
+}
+
+.message__main {
+  height: 70vh;
+  border-bottom: solid black 2px;
+  background-color: white;
+  border: solid black 2px;
+}
+
+.message__footer {
+  height: 70px;
+  border-bottom: solid black 2px;
+  background-color: gray;
+}
+.message__form {
+  height: 45px;
+  width: 640px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 160px;
+  padding-top: 22px;
+}
+.message__input {
+  height: 45px;
+  width: 700px;
+  margin-right: 40px;
+}
+
+.message__submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 150px;
+}
+メッセージルーム
+
+    d = @k.pluck(:user_id)                              #上記ユーザーのuser_idを配列で取得
+    d.delete(current_user.id)                           #上記から現ユーザーのuser_idを削除
+  メッセージコントローラーより
+
+  配列の順番を保った状態で情報を取得する方法Model.where(カラム名: 配列名).order(['field(カラム名, ?)', 配列名])
+  Model.where(id: ids).order(['field(id, ?)', ids])
+
+
+
+    @b = Profile.where(user_id: user_id_arry)              #現在いるDMルームにいるユーザー二人のprofilesテーブル情報を取得
+    @b_nickname_arry = @b.pluck(:nickname)                 #現在いるDMルームにいるユーザー二人のニックネームを取得
+    # binding.pry
+    メッセージコントローラーから

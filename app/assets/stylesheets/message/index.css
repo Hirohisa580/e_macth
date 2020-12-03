@@ -1,11 +1,73 @@
-.messsage__wrapper {
-  
+.message__wrapper {
+  padding: 0px 100px;
+  height: 100vh;
 }
 
 .message__header {
-  border-bottom: solid black 2px;
+
 }
 .header__title {
   padding: 15px;
   text-align: center;
+  margin-left: 300px;
 }
+
+.message__main {
+  float: right;
+  height: 70vh;
+  width: 70%;
+  border-bottom: solid black 2px;
+  background-color: white;
+  border: solid black 2px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.all__message {
+  /* background-color: lightblue; */
+  text-align: center;
+  margin: 10px 100px 0px 100px;
+  font-weight: bold;
+}
+.all__nickname {
+  /* background-color: lightcoral; */
+  margin: 10px 200px 0px 300px;
+  text-align: end;
+}
+.all__created_at {
+  /* background-color: lightyellow; */
+  margin: 0px 300px 20px 300px;
+  text-align: center;
+  float: right;
+}
+
+
+
+.message__footer {
+  height: 70px;
+  width: 100%;
+}
+.message__form {
+  height: 45px;
+  width: 640px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 350px;
+  padding-top: 22px;
+}
+.message__input {
+  height: 55px;
+  width: 70vw;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+.message__submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 150px;
+}
+
+
