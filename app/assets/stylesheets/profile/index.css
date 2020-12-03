@@ -72,10 +72,6 @@
 }
 
 
-.item-img-content {
-  position: relative;
-}
-
 .item-img {
   width: 33vh;
   height: 33vh;
@@ -89,4 +85,16 @@
 
 .item-name {
   font-size: 2.5vh;
+}
+.profile__nickname {
+  margin-bottom: 7px;
+  color: black;
+  font-weight: bold;
+}
+.profile__genre {
+  margin-bottom: 7px;
+  color: black;
+}
+.profile__area {
+  color: black;
 }

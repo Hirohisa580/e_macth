@@ -14,8 +14,8 @@
  *= require_self
  */
  .all__main {
-  background-color: ghostwhite;
-  height: 100vh;
+  background-image: url(https://ferret.akamaized.net/images/59e76165fafbd876ce00035c/original.jpg?1508335973);
+  height: 100%;
   width: 100vw;
 }
 
@@ -36,6 +36,9 @@
    display: flex;
    justify-content: space-between;
    /* margin-top: 2vh; */
+ }
+ header {
+  background-image: url(https://ferret.akamaized.net/images/59e76165fafbd876ce00035c/original.jpg?1508335973);
  }
 
 .registration-main {
@@ -96,6 +99,11 @@ margin-right: 20px;
 .header__name span {
   font-size: 20px;
   color: rgb(200, 95, 95);
+}
+
+.login__user {
+  margin-right: 30px;
+  float: right;
 }
 /* ヘッダー */
 

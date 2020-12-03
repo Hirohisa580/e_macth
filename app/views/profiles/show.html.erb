@@ -1,7 +1,7 @@
 <div class="top-page">  
    <%=render "shared/header"%>
 </div>
-  <div class="all_main">
+  <div class="all__main">
     <div class="profile__wrapper">
       <p class="profile__hedding">
         <%= "#{@profile.nickname}"%>
@@ -9,16 +9,15 @@
 
       <div class="profile__direct">
         <% if current_page?(@user_profile) && @user_profile != nil%>
-          <%= link_to "DMルーム（現ユーザー）", dm_path(@current_profile.id), class: :profile__btn %>            
+          <%= link_to "DMルーム（現ユーザー）", dm_messages_path(:dm_id), class: :profile__btn %>            
         <% elsif !@intersection.empty?%>
-          <%= link_to "DMルーム", dm_path(@profile.id), class: :profile__btn %> 
-        <% elsif @user_profile != nil %>
-          <%= form_with model:@dm, url: dms_path, method: :post, local: true do |f|%>
-            <input name="dm[user_ids][]" type="hidden" value=<%= @profile.user_id%>>
-            <input name="dm[user_ids][]" type="hidden" value=<%= current_user.id %>>
-            <%= f.submit "DMルーム（作成前）", class: :profile__btn %>
-          <% end %>  
+          <%= link_to "DMルーム", dm_messages_path(@intersection), class: :profile__btn %> 
         <% else %>
+            <%= form_with model:@dm, url: dms_path, method: :post, local: true do |f|%>
+              <input name="dm[user_ids][]" type="hidden" value=<%= @profile.user_id %>>
+              <input name="dm[user_ids][]" type="hidden" value=<%= current_user.id %>>
+              <%= f.submit "DMルーム（作成前）", class: :profile__btn %>
+            <% end %>
         <% end %>
       </div>
 
