@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_015603) do
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
-    t.integer "age"
+    t.string "age"
     t.date "birthday"
     t.integer "area_id", null: false
     t.integer "genre_one_id", null: false

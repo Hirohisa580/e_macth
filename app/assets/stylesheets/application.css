@@ -74,7 +74,7 @@
 
 header {
   /* background-color: rgba(255,147,30,0.5); */
-  padding-top: 3vh;
+  /* padding-top: 3vh; */
 }
 
 .top-logo {
@@ -85,6 +85,7 @@ header {
   -webkit-text-fill-color: white;
   text-shadow: 5px 3px 0 orange;
   margin: auto;
+  margin-top: 10px;
 }
 .top-logo span {
   color: red;

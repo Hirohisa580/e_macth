@@ -15,7 +15,7 @@
 
           <div class="field area">
             <label >年齢（任意）<br /><label >
-            <%= f.text_field :age, class: "form-control" %>
+            <%= f.text_field :age, class: "form-control", placeholder: "例) 25 ※半角数字(歳)"%>歳
           </div>
 
           <div class="form-group area">
@@ -44,11 +44,11 @@
 
           <div class="field area">
             <label >芸歴（任意）<br /><label >
-            <%= f.text_field :history, placeholder: "例) 3年", class: "form-control"  %>
+            <%= f.text_field :history, placeholder: "例) 3 ※半角数字(年)", class: "form-control"  %>年
           </div>
 
           <div class="field area">
-            <label >自己紹介（任意）<br /><label >
+            <label >自己紹介（必須）<br /><label >
             <%= f.text_area :public_relation, placeholder: " ", class: "form-control"  %>
           </div>
 
@@ -72,7 +72,7 @@
             </div>
 
           <div class="img-upload field">
-            <label >プロフィール写真<br /><label >
+            <label >プロフィール写真（必須）<br /><label >
             <%= f.file_field :image, id:"item-image"%>
           </div>
 

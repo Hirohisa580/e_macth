@@ -4,8 +4,18 @@
 </div>
 
 <div class="all__main">
-    <div class="message__wrapper" >
+    <div class="message__wrapper row" >
+
+       <div class="box1 col-4">
+        <div class="message__users">
+        <h3 class="user__title">ユーザーを選択</h3>
+          <% @h.zip(@s_uniq) do |h, s_uniq| %>
+            <p><%=link_to "#{h.nickname}", dm_messages_path(s_uniq), class: "user__choice" %></p>
+          <% end %>
+        </div>
+      </div>
       
+      <div class="box2 col-8">
         <div class="message__header">
           <% if @b_other == nil %>
             <h1 class="header__title">⬅️ユーザーを選択してください<h1>
@@ -25,12 +35,6 @@
           <% end %>
         </div>
 
-        <div class="message__users">
-          <% @h.zip(@s_uniq) do |h, s_uniq| %>
-            <p><%=link_to "#{h.nickname}", dm_messages_path(s_uniq) %></p>
-          <% end %>
-        </div>
-
         <% if @b_other == nil%>
         <% else %>
           <div class="message__footer">
@@ -42,6 +46,7 @@
             <% end %>
           </div>
         <% end %>
+      </div>
 
     </div>
 </div>

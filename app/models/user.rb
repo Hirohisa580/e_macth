@@ -14,14 +14,19 @@ class User < ApplicationRecord
     validates :first_name_ruby
     validates :last_name_ruby
     validates :phone_number
+  end
   
   with_options format: {with: /\A[ぁ-んァ-ン一-龥]/} do
     validates :first_name
     validates :last_name
   end
 
-  with_options format: {with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/} do
+  with_options format: {with: /\A[\p{hiragana} ー－&&[^ -~｡-ﾟ]]+\z/} do
     validates :first_name_ruby
     validates :last_name_ruby
   end
+
+  validates :phone_number, format: {with: /\A\d{10}$|^\d{11}\z/}
+
+  # validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]/}
 end
