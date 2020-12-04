@@ -28,5 +28,5 @@ class User < ApplicationRecord
 
   validates :phone_number, format: {with: /\A\d{10}$|^\d{11}\z/}
 
-  validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]/}
+  # validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]/}
 end

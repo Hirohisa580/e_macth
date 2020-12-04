@@ -13,19 +13,23 @@ class ProfilesController < ApplicationController
 
   def create
     profile = Profile.new(profile_params)
-    profile.save
-    redirect_to root_path
+    if profile.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
+    @profile = Profile.find(params[:id])
     profile_user_id = @profile.user_id                        #選んだユーザーのユーザーidを取得
     profile_user_dm = UserDm.where(user_id: profile_user_id)  #user_dmsテーブルに登録されている選んだユーザーの情報を取得
-    @profile_dm_ids = profile_user_dm.pluck(:dm_id)           #選んだユーザーが持ってるdm_idを配列で取得
+    profile_dm_ids = profile_user_dm.pluck(:dm_id)           #選んだユーザーが持ってるdm_idを配列で取得
     user_dm= UserDm.where(user_id: current_user.id)
-    @dm_ids = user_dm.pluck(:dm_id)                           #現ユーザーが持ってるdm_idを配列で取得
-    @intersection = @dm_ids & @profile_dm_ids                 #重なったdm_id
+    dm_ids = user_dm.pluck(:dm_id)                           #現ユーザーが持ってるdm_idを配列で取得
+    @intersection = dm_ids & profile_dm_ids                 #重なったdm_id
 
-    @profile = Profile.find(params[:id])
+    @dm = Dm.new
   end
 
   def edit 

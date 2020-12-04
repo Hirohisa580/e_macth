@@ -37,7 +37,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    binding.pry
     i = UserDm.where(dm_id: params[:dm_id])               #選んだユーザーと現ユーザーのuser_dmsテーブル情報を取得
     user_id_arry = i.pluck(:user_id)  
     @b = Profile.where(user_id: user_id_arry)              #現在いるDMルームにいるユーザー二人のprofilesテーブル情報を取得

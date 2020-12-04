@@ -23,9 +23,6 @@
     </header>
     <div class='item-contents'>
       <h2 class='title'>プロフィール一覧</h2>
-      <% if @profile_all == nil %>
-        <p><%= "代わりの画像" %></p>
-      <% else %>
         <ul class='item-lists'>
           <% @profile_all.each do |profile| %>
             <li class='list'>
@@ -44,11 +41,12 @@
             </li>
           <% end %>
         </ul>
-      <% end %>
+        <% if @profile_all.empty?%>
+          <%= iimage_tag '' %>
+        <% end %>
     </div>
 </div>
 
 
-      <%#= link_to '新規投稿商品', "/items/new", class: "subtitle" %>
 
  

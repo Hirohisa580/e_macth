@@ -83,6 +83,7 @@ require 'rails_helper'
           binding.pry
           expect(@profile.errors.full_messages).to include("User must exist")
         end
+        
       end
     end
   end
