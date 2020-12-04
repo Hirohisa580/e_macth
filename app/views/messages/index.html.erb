@@ -30,7 +30,7 @@
               <% @r.zip(@b) do |r, b| %>
                 <p class="all__message"><%= r.message%></p>
                   <%# <p class="all__nickname"><%= b.nickname%></p>  
-                <p class="all__created_at"><%= r.created_at %></p>
+                <p class="all__created_at"><%= "投稿日時 #{r.created_at}" %></p>
               <% end %>
           <% end %>
         </div>

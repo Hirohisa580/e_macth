@@ -2,7 +2,6 @@ class MessagesController < ApplicationController
   before_action :header_variable
 
   def index
-
     @message = Message.new
     i = UserDm.where(dm_id: params[:dm_id])             #選んだユーザーと現ユーザーのuser_dmsテーブル情報を取得
     user_id_arry = i.pluck(:user_id)                    #選んだユーザーと現ユーザーのuser_idを配列で取得
@@ -27,12 +26,12 @@ class MessagesController < ApplicationController
     @current_dm_uniq = current_dm.uniq
     @r = Message.where(dm_id: @current_dm_uniq)
     
-    i = UserDm.where(dm_id: params[:dm_id])               #選んだユーザーと現ユーザーのuser_dmsテーブル情報を取得
     user_id_arry = i.pluck(:user_id)  
     @b = Profile.where(user_id: user_id_arry)              #現在いるDMルームにいるユーザー二人のprofilesテーブル情報を取得
     @b_nickname_arry = @b.pluck(:nickname) 
 
-    @b_other = Profile.find_by(user_id: user_id)           #選んだユーザーのprofilesテーブル情報を取得
+    user_id_arry.delete(current_user.id)                   #DMルームの二人のuser_idから現ユーザーのuser_idを削除
+    @b_other = Profile.find_by(user_id: user_id_arry)
   
   end
 
