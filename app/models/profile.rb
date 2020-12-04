@@ -11,14 +11,17 @@ class Profile < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :age
-    validates :birthday
-    validates :history
     validates :public_relation
+    validates :image
   end
 
   with_options numericality: { other_than: 1 } do
     validates :area_id
     validates :genre_one_id
+  end
+
+  with_options format: {with: /\A[0-9]+\z/} , allow_nil: true do
+    validates :age
+    validates :history
   end
 end

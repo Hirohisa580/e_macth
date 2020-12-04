@@ -25,7 +25,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nick_name|string|null: false|
+|nickname|string|null: false|
 |age|integer|       |
 |birthday|date| ※date_select使用|
 |area_id|integer|null: false ※ActiveHash使用|
