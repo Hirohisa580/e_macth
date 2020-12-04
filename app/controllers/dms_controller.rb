@@ -18,8 +18,8 @@ class DmsController < ApplicationController
 
   private
 
-
     def dm_params
       params.require(:dm).permit(user_ids: [])
     end
+    
 end
