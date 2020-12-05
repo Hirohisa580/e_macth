@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :dms, only: [:new, :create] do
     resources :messages, only: [:index, :create]
   end
+  resources :boards
+  get 'boards/:id', to: 'boards#checked'
 end

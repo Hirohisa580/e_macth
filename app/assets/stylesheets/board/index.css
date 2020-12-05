@@ -1,0 +1,43 @@
+.board__title {
+  /* background-color: orange; */
+  height: 60px;
+}
+
+.board__new {
+  /* background-color: lightblue; */
+  display: flex;
+  justify-content: flex-end; 
+  padding-right: 40px;
+  padding-top: 12px;
+}
+
+.board__title {
+  background-color: lightyellow;
+  font-weight: bold;
+  padding-left: 30px;
+  font-size: 30px;
+}
+
+.board__main {
+  background-color: lightblue;
+  height: 100%;
+  margin-left: 20px;
+}
+
+.box3 {
+  background-color: palegoldenrod;
+  height: 100vh;
+}
+.box4 {
+  background-color: tan;
+  height: 100vh;
+}
+
+.topic {
+  color: black;
+  font-size: 25px;;
+  list-style-type: square;
+}
+.topics {
+  list-style-type: square;
+}
