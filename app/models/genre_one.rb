@@ -20,5 +20,6 @@ class GenreOne < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :profiles
+  has_many :boards
 
 end

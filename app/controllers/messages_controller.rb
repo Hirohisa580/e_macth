@@ -41,8 +41,11 @@ class MessagesController < ApplicationController
     @b = Profile.where(user_id: user_id_arry)              #現在いるDMルームにいるユーザー二人のprofilesテーブル情報を取得
     @b_nickname_arry = @b.pluck(:nickname)                 #現在いるDMルームにいるユーザー二人のニックネームを取得
     @message = Message.new(set_message)
-    @message.save
-    redirect_to dm_messages_path(params[:dm_id])
+    if @message.save
+      redirect_to dm_messages_path(params[:dm_id])
+    else
+      render :index
+    end
   end
     
 

@@ -20,7 +20,7 @@
             </li>
           </ul>
         <% end %>
-    </header>
+    </div>
     <div class='item-contents'>
       <h2 class='title'>プロフィール一覧</h2>
         <ul class='item-lists'>
@@ -31,8 +31,8 @@
                   <%= image_tag profile.image, class: "item-img img-thumbnail" %>
                 </div>
               <% end %>
-                <div class='item-info'>
-                  <h3 class='item-name'>
+                <div class='item__info'>
+                  <h3 class='item__name'>
                     <li>芸名: <%= link_to "#{profile.nickname}", profile_path(profile.id), class: "profile__nickname"%></li>
                     <li>ジャンル: <%= link_to "#{profile.genre_one.name}", "#", class: "profile__genre"%></li>
                     <li>地域: <%= link_to "#{profile.area.name}", "#", class: "profile__area"%></li>

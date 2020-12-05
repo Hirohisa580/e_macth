@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :boards
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
