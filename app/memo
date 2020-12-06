@@ -167,4 +167,56 @@ dmビューのnewから
   dmコントローラーのnewから
 
 
+function check() {
+  const boards = document.querySelectorAll(".board");
+  boards.forEach(function (board) {
+    board.addEventListener("click", () => {
+      const boardId = board.getAttribute("data-id");
+      const XHR = new XMLHttpRequest();
+      XHR.open("GET", `/boards/${boardId}`, true);
+      XHR.responseType = "json";
+      XHR.send();
+      XHR.onload = () => {
+        if (XHR.status != 200) {
+          alert(`Error ${XHR.status}: ${XHR.statusText}`);
+          return null;          
+        }
+        const item = XHR.response.board;
+
+        if (item.checked === true) {
+          const list = document.getElementById("list");
+          const formText = document.getElementById("content");
+          const HTML = `
+            <div class="" data-id=${item.id}>
+              <div class="post-date">
+                投稿日時：${item.created_at}
+              </div>
+              <div class="post-content">
+              ${item.content}
+              </div>
+            </div>`;
+          list.insertAdjacentHTML("afterend", HTML);
+          formText.value = "";
+        };
+      };
+    });
+  });
+}
+window.addEventListener("load", check);
+
+checked.jsから
+
+
+    # respond_to do |f|
+    #   f.json { render json: {board: item, profile: profile }}
+    # end
+    # respond_to do |format|
+    #   format.json  { render :json => item }
+    #   format.json  { render :json => profile }
+    # end
+    # respond_to do |format|
+    #   format.json  { render :json => {:item => @item, 
+    #                                   :profile => @profile }}
+    # end
+    checkコントローラーから
 

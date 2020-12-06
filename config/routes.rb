@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :dms, only: [:new, :create] do
     resources :messages, only: [:index, :create]
   end
-  resources :boards
+  resources :boards, except: [:show] do
+    resources :comments, only: [:show, :create]
+  end
+  
   get 'boards/:id', to: 'boards#checked'
 end

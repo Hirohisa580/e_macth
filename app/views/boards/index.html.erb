@@ -9,21 +9,28 @@
     </li>
   </ul>
   <div class="row">
-    <div class="box3 col-5">
+    <div class="box3 col-6">
       <div class='board__main'>
-        <h2 class='board__title'>タイトル一覧</h2>       
+        <h2 class='board__title'>掲示板タイトル一覧</h2><span class="remarks">※詳細をクリックで説明欄を開く。もう一度クリックで閉じる</span>     
           <ul class="topic__lists">
             <% @board_all.each do |board|%>
-              <li class="topics">
-                <%=link_to "#{board.name}", "#", class: "topic" %>
-              </li>
+              <div class="board" data-id=<%= board.id %> data-check=<%= board.checked%>>
+                <li class="topics">
+                  <%= link_to "#{board.name}", "#" %>
+                  <span class="badge badge-secondary" id= "topic__title">詳細</span>
+                </li>
+              </div>
             <% end %>
           </ul>
       </div>
     </div>
 
-    <div class="box4 col-7">
-      内容説明（クリックで詳細ページへ）
+    <div class="box4 col-6">
+      <div class="exp__box">
+        <div id="exp__main">
+   
+        </div>
+      </div>
     </div>
   </div>
 </div>
