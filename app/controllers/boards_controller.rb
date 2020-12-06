@@ -8,6 +8,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   def create
@@ -43,8 +44,8 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    @profile = Profile.find_by(user_id: current_user.id)
-    params.require(:board).permit(:name, :genre_one_id, :explanation).merge(profile_id: @profile.id)
+    # @profile = Profile.find_by(user_id: current_user.id)
+    params.require(:board).permit(:name, :genre_one_id, :explanation, profile_ids: [])
   end
 
 

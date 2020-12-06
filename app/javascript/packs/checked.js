@@ -16,7 +16,7 @@ function check() {
         const list = document.getElementById("exp__main");
         const topic = document.getElementById("topic__title")
         const HTML = `
-          <div calss="exp__open">
+          <div class="exp__open">
               ${item.explanation}
           </div>`;
           if (item.checked === true) {
@@ -24,7 +24,6 @@ function check() {
         } else if (item.checked === false) {
            const exp__main = document.getElementById("exp__main")
            exp__main.innerHTML = "";
-
         };
       };
     });

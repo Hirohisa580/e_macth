@@ -11,12 +11,12 @@
   <div class="row">
     <div class="box3 col-6">
       <div class='board__main'>
-        <h2 class='board__title'>掲示板タイトル一覧</h2><span class="remarks">※詳細をクリックで説明欄を開く。もう一度クリックで閉じる</span>     
+        <h2 class='board__title'>掲示板タイトル一覧</h2><span class="remarks">※詳細をクリックで説明欄を開く。もう一度クリックで閉じる(必ず閉じてから別の詳細を開いてください)</span>     
           <ul class="topic__lists">
             <% @board_all.each do |board|%>
               <div class="board" data-id=<%= board.id %> data-check=<%= board.checked%>>
                 <li class="topics">
-                  <%= link_to "#{board.name}", "#" %>
+                  <%= link_to "#{board.name}", board_comments_path(board.id)%>
                   <span class="badge badge-secondary" id= "topic__title">詳細</span>
                 </li>
               </div>
@@ -28,7 +28,7 @@
     <div class="box4 col-6">
       <div class="exp__box">
         <div id="exp__main">
-   
+
         </div>
       </div>
     </div>

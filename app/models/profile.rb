@@ -1,8 +1,10 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_many :boards
+  has_many :profile_baords
+  has_many :boards, through: :profile_boards
   has_many :comments
+
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
