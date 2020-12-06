@@ -1,5 +1,6 @@
 class Board < ApplicationRecord
-  belongs_to :profile
+  has_many :profile_boards
+  has_many :profiles, through: :profile_boards
   has_many :comments
 
 
