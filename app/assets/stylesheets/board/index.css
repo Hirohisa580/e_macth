@@ -1,6 +1,9 @@
 .board__title {
   /* background-color: orange; */
-  height: 60px;
+  height: 40px;
+  font-weight: bold;
+  padding-left: 30px;
+  font-size: 30px;
 }
 
 .board__new {
@@ -11,33 +14,60 @@
   padding-top: 12px;
 }
 
-.board__title {
-  background-color: lightyellow;
-  font-weight: bold;
-  padding-left: 30px;
-  font-size: 30px;
-}
-
 .board__main {
-  background-color: lightblue;
+  /* background-color: lightblue; */
   height: 100%;
   margin-left: 20px;
 }
 
 .box3 {
-  background-color: palegoldenrod;
+  /* background-color: palegoldenrod; */
   height: 100vh;
 }
 .box4 {
-  background-color: tan;
-  height: 100vh;
+  /* background-color: tan; */
+  height: 80vh;
 }
 
-.topic {
-  color: black;
-  font-size: 25px;;
-  list-style-type: square;
-}
 .topics {
   list-style-type: square;
+  color: black;
+  font-size: 3.0vh;
+}
+/* div[data-check="true"] {
+  background: #585555;
+} */
+.exp__click {
+  font-size: 0.7vh;
+  color: gray;
+}
+
+.badge {
+  cursor : pointer;
+}
+
+.board {
+  margin-bottom: 15px;
+}
+
+.exp__box {
+  background-color: white;
+  margin-right: 60px;
+  height: 70vh;
+  overflow: scroll;
+  border: solid 2px black;
+  border-radius: 10px;
+}
+
+#topic__title {
+  margin-left: 20px;
+}
+
+#exp__main {
+  margin: 20px;
+}
+
+.remarks {
+  font-size: 0.7vh;
+  color: gray;
 }

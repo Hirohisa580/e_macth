@@ -20,10 +20,6 @@ class BoardsController < ApplicationController
     end
   end
 
-  def show
-    @board = Board.find(params[:id])
-  end
-
   def checked
     board = Board.find(params[:id])
     if board.checked 
@@ -32,7 +28,7 @@ class BoardsController < ApplicationController
       board.update(checked: true)
     end
 
-    item = board.find(params[:id])
+    item = Board.find(params[:id])
     render json: { board: item }
   end
 
