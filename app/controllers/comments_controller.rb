@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
    def create
     @comment = Comment.new(comment_params)
     @comment.save
-    redirect_to root_path
+    redirect_to board_comments_path(params[:board_id])
    end
 
 
