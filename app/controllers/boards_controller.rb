@@ -22,12 +22,12 @@ class BoardsController < ApplicationController
   end
 
   def checked
-    board = Board.find(params[:id])
-    if board.checked 
-      board.update(checked: false)
-    else
-      board.update(checked: true)
-    end
+    # board = Board.find(params[:id])
+    # if board.checked 
+    #   board.update(checked: false)
+    # else
+    #   board.update(checked: true)
+    # end
 
     item = Board.find(params[:id])
     render json: { board: item }
