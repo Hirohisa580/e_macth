@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function(){
     const imageElement = document.createElement('div');   // 画像を表示するためのdiv要素を生成
     const blobImage = document.createElement('img');   // 表示する画像を生成
     blobImage.setAttribute('src', blob);   //表示する画像に属性と値を設定
-    // imageElement.setAttribute('class', image__preview)
+    blobImage.setAttribute('class', "img")
+
 
     imageElement.appendChild(blobImage);
     ImageList.appendChild(imageElement);   // 生成したHTMLの要素をブラウザに表示させる
