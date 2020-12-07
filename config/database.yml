@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: e_macth_development
+  database: e_match_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: e_macth_test
+  database: e_match_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: e_macth_production
-  username: e_macth
-  password: <%= ENV['E_MACTH_DATABASE_PASSWORD'] %>
+  database: e_match_production
+  username: e_match
+  password: <%= ENV['e_match_DATABASE_PASSWORD'] %>
