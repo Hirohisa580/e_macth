@@ -16,15 +16,19 @@ function check() {
         const list = document.getElementById("exp__main");
         const topic = document.getElementById("topic__title")
         const HTML = `
-          <div class="exp__open">
+          <main class="exp__open">
               ${item.explanation}
-          </div>`;
-          if (item.checked === true) {
+          </main>`;
+          // if (item.checked === true) {
+            const expHtml = document.querySelector('main');
+            if (expHtml){
+              expHtml.remove();
+            }
           list.insertAdjacentHTML("beforeend", HTML);
-        } else if (item.checked === false) {
-           const exp__main = document.getElementById("exp__main")
-           exp__main.innerHTML = "";
-        };
+        // } else if (item.checked === false) {
+        //    const exp__main = document.getElementById("exp__main")
+        //    exp__main.innerHTML = "";
+        // };
       };
     });
   });
