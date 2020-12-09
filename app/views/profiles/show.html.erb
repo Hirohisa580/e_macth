@@ -74,8 +74,10 @@
 
       </div>
         <div class="profile__manage">
-          <%= link_to "編集する", edit_profile_path(@profile.id), class: :profile__btn %>
-          <%= link_to "削除する", profile_path(@profile.id), method: :delete, class: :profile__btn %>
+         <% if current_user.id == @profile.user_id %>
+            <%= link_to "編集する", edit_profile_path(@profile.id), class: :profile__btn %>
+            <%= link_to "削除する", profile_path(@profile.id), method: :delete, class: :profile__btn %>
+          <% end %>
         </div>
     </div>
   </div>
