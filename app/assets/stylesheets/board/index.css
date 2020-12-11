@@ -71,3 +71,10 @@
   font-size: 0.7vh;
   color: gray;
 }
+
+.topic__edit {
+  color: white;
+}
+.topic__edit:hover {
+  color: white;
+}

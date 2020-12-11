@@ -37,9 +37,13 @@ ActiveRecord::Schema.define(version: 2020_12_06_110352) do
     t.string "name", null: false
     t.integer "genre_one_id", null: false
     t.text "explanation", null: false
+    t.bigint "profile_id"
+    t.bigint "user_id"
     t.boolean "checked"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_boards_on_profile_id"
+    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,15 +69,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_110352) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["dm_id"], name: "index_messages_on_dm_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "profile_boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "profile_id"
-    t.bigint "board_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["board_id"], name: "index_profile_boards_on_board_id"
-    t.index ["profile_id"], name: "index_profile_boards_on_profile_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -119,12 +114,12 @@ ActiveRecord::Schema.define(version: 2020_12_06_110352) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "boards", "profiles"
+  add_foreign_key "boards", "users"
   add_foreign_key "comments", "boards"
   add_foreign_key "comments", "profiles"
   add_foreign_key "messages", "dms"
   add_foreign_key "messages", "users"
-  add_foreign_key "profile_boards", "boards"
-  add_foreign_key "profile_boards", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "user_dms", "dms"
   add_foreign_key "user_dms", "users"

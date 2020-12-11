@@ -18,6 +18,10 @@
                 <li class="topics">
                   <%= link_to "#{board.name}", board_comments_path(board.id)%>
                   <span class="badge badge-secondary" id= "topic__title">詳細</span>
+                  <% if board.user_id == current_user.id %>
+                    <span class="badge badge-secondary" id= "topic__title"><%= link_to '編集', edit_board_path(board), class: "topic__edit" %></span>
+                    <span class="badge badge-secondary" id= "topic__title"><%= link_to '削除', board_path(board), method: :delete, class: "topic__edit" %></span>
+                  <% end %>
                 </li>
               </div>
             <% end %>

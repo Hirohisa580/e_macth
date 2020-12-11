@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
   before_action :header_variable, only: [:index, :new, :show, :edit]
-  before_action :set_profile, only: [:show, :edit, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
     @profile_all = Profile.all
@@ -33,13 +33,13 @@ class ProfilesController < ApplicationController
   end
 
   def edit 
-    if current_user.id != @profile.id
+    if current_user.id != @profile.user_id
       redirect_to root_path
     end
   end
 
   def update
-    @profile = Profile.update(profile_params)
+    @profile.update(profile_params)
     redirect_to profile_path
   end
 

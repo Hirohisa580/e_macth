@@ -1,9 +1,11 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
-  before_action :header_variable, only: [:index, :new]
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit]
+  before_action :header_variable, only: [:index, :new, :edit]
+  before_action :set_board, only: [:edit, :update, :destroy]
 
   def index
     @board_all = Board.all
+    @profile_all = Profile.all
   end
 
   def new
@@ -19,6 +21,22 @@ class BoardsController < ApplicationController
       header_variable
       render :new
     end
+  end
+
+  def edit
+
+  end
+
+  def update
+
+    @board.update(board_params)
+    redirect_to boards_path
+  end
+
+  def destroy
+
+    @board.destroy
+    redirect_to boards_path
   end
 
   def checked
@@ -44,8 +62,12 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    # @profile = Profile.find_by(user_id: current_user.id)
-    params.require(:board).permit(:name, :genre_one_id, :explanation, profile_ids: [])
+    @profile = Profile.find_by(user_id: current_user.id)
+    params.require(:board).permit(:name, :genre_one_id, :explanation).merge(profile_id: @profile.id, user_id: current_user.id)
+  end
+
+  def set_board
+    @board = Board.find(params[:id])
   end
 
 
