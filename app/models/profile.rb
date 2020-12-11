@@ -1,9 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_many :profile_baords
-  has_many :boards, through: :profile_boards
-  has_many :comments
+  has_many :boards, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
 

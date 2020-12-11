@@ -1,7 +1,7 @@
 class Board < ApplicationRecord
-  has_many :profile_boards
-  has_many :profiles, through: :profile_boards
-  has_many :comments
+  belongs_to :profile
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions

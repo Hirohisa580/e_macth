@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :user_dms #中間テーブル
   has_many :dms, through: :user_dms
+  has_many :boards
 
   with_options presence: true do
     validates :first_name
