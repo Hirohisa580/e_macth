@@ -8,11 +8,13 @@
 
             <div class="box5 col-7">
                 <div class="comment__main">
-                    <% @comment_where.each do |comment| %>
+                    <% @comment_where.zip do |commentq| %>
                       <div class="comment__comment">
-                        <p class="comment__time">投稿日時<%= comment.created_at %><%="投稿者: #{comment.profile.nickname}" %></p>
-                        <%= comment.comment %>
-                        <p class="comment__profile"></p>
+                        <p class="comment__time">投稿日時<%= commentq.created_at %><%="投稿者: #{commentq.profile.nickname}" %></p>
+                        <%= commentq.comment %>
+                        <div class="edit__flex">
+                          <p><%= link_to '削除する', "/boards/#{@board.id}/comments/#{commentq.id}", method: :delete, class: "comment__edit" %></p>
+                        </div>
                       </div>
                     <% end %>
                 </div>
