@@ -66,3 +66,12 @@
 .comment__name {
   margin: 15px 15px 0px 15px;
 }
+
+.edit__flex {
+  display: flex;
+  justify-content: flex-end;
+}
+.comment__edit {
+  color: lightgray;
+  margin-right: 1vw
+}
