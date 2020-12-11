@@ -50,10 +50,12 @@ ActiveRecord::Schema.define(version: 2020_12_06_110352) do
     t.text "comment", null: false
     t.bigint "profile_id"
     t.bigint "board_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["board_id"], name: "index_comments_on_board_id"
     t.index ["profile_id"], name: "index_comments_on_profile_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "dms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -118,6 +120,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_110352) do
   add_foreign_key "boards", "users"
   add_foreign_key "comments", "boards"
   add_foreign_key "comments", "profiles"
+  add_foreign_key "comments", "users"
   add_foreign_key "messages", "dms"
   add_foreign_key "messages", "users"
   add_foreign_key "profiles", "users"
